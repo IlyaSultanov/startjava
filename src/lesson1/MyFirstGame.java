@@ -1,26 +1,22 @@
-package lesson1;
-
 public class MyFirstGame {
 
     public static void main(String[] args) {
-
         int mystery = 50;
-        int key = 17;
+        int humansNumber = 17;
 
-        if (mystery < 0 || mystery > 100 || key < 0 || key > 100) {
+        if (mystery < 0 || mystery > 100 || humansNumber < 0 || humansNumber > 100) {
             System.out.println("числа должны быть от 0 до 100");
         }
 
-        while (key != mystery) {
-            if (key > mystery) {
+        while (humansNumber != mystery) {
+            if (humansNumber > mystery) {
                 System.out.println("Введенное вами число больше того, что загадал компьютер");
-                key = key - 1;
+                humansNumber--;
             } else {
                 System.out.println("Введенное вами число меньше того, что загадал компьютер");
-                key = key + 1;
+                humansNumber++;
             }
         }
-
         System.out.println("Вы угадали! " + mystery);
     }
 }

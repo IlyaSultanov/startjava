@@ -1,43 +1,33 @@
-package lesson1;
-
-public class IfElseStudy {
+public class ConditionalStatement {
 
     public static void main(String[] args) {
-
         byte age = 25;
-
-        boolean sex = true;
-
-        float height = 1.70f;
-
-        String name = "Михаил";
-
         if (age > 20) {
             System.out.println("Возраст больше " + age);
         }
 
-        if (sex) {
+        boolean isMale = true;
+        if (isMale) {
             System.out.println("Пол мужской");
-        }
-
-        if (!sex) {
+        } else {
             System.out.println("Пол женский");
         }
 
+        float height = 1.70f;
         if (height < 1.80) {
             System.out.println("Рост меньше " + height);
         } else {
             System.out.println("Рост больше " + height);
         }
 
+        String name = "Михаил";
         if (name.startsWith("М")) {
             System.out.println("Имя начинается с М");
+        } else if (name.startsWith("И")) {
+            System.out.println("Имя начинается с И");
         } else {
-            if (name.startsWith("И")) {
-                System.out.println("Имя начинается с И");
-            } else {
-                System.out.println("Имя не начинается ни с М, ни с И");
-            }
+            System.out.println("Имя не начинается ни с М, ни с И");
         }
     }
 }
+
