@@ -1,22 +1,22 @@
 public class Variable {
 
     public static void main(String[] args) {
-        byte myByte = 2;
-        short myShort = 4;
-        int myInt = 4096;
-        long myLong = 240000000000000000L;
-        float myFloat = 2.0F;
-        double myDouble = 3.88;
-        char myChar = 9398;
-        boolean myBoolean = true;
+        byte coreQuantity = 2;
+        short threadCuantity = 4;
+        int ram = 4096;
+        long procFrequency = 240000000000000000L;
+        float hardDiscQuantity = 2.0F;
+        double spaceOnC = 3.88;
+        char justChar = 9398;
+        boolean isComputerOfMine = true;
 
-        System.out.println("Количество ядер = "  + myByte           + "\n" +
-                "количество потоков = "          + myShort          + "\n" +
-                "оперативная память = "          + myInt    + " Мб" + "\n" +
-                "частота процессора = "          + myLong   + " Гц" + "\n" +
-                "количество жестких дисков = "   + myFloat          + "\n" +
-                "свободное место на диске С: = " + myDouble + " Гб" + "\n" +
-                "просто символ "                 + myChar           + "\n" +
-                "это мой компьютер "             + myBoolean);
+        System.out.println("Количество ядер = "  + coreQuantity              + "\n" +
+                "количество потоков = "          + threadCuantity            + "\n" +
+                "оперативная память = "          + ram               + " Мб" + "\n" +
+                "частота процессора = "          + procFrequency     + " Гц" + "\n" +
+                "количество жестких дисков = "   + hardDiscQuantity          + "\n" +
+                "свободное место на диске С: = " + spaceOnC          + " Гб" + "\n" +
+                "просто символ "                 + justChar                  + "\n" +
+                "это мой компьютер "             + isComputerOfMine);
     }
 }
