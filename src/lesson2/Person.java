@@ -1,0 +1,20 @@
+public class Person {
+
+    public static void main(String[] args) {
+        String sex = "male";
+        String name = "Alex";
+        int height = 180;
+        int weight = 80;
+        int age = 30;
+    }
+
+    void go() {}
+
+    void sit() {}
+
+    void run() {}
+
+    void speak() {}
+
+    void learnJava() {}
+}
