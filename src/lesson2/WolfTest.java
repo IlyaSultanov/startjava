@@ -2,13 +2,13 @@ public class WolfTest {
 
     public static void main(String[] args) {
         Wolf woolfy = new Wolf();
-        woolfy.age = 7;
-        woolfy.color = "white";
-        woolfy.gender = "suka";
-        woolfy.weight = 15;
-        woolfy.name = "Woolfy";
+        woolfy.setAge(9);
+        woolfy.setColor("white");
+        woolfy.setGender("suka");
+        woolfy.setWeight(15);
+        woolfy.setName("Woolfy");
 
-        System.out.println(woolfy.age + " " + woolfy.color + " " + woolfy.gender + " " + woolfy.weight + " " + woolfy.name);
+        System.out.println(woolfy.getAge() + " " + woolfy.getColor() + " " + woolfy.getGender() + " " + woolfy.getWeight() + " " + woolfy.getName());
 
         woolfy.go();
         woolfy.howl();
