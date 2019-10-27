@@ -1,16 +1,23 @@
-        String sex = "male";
-        String name = "Alex";
-        int height = 180;
-        int weight = 80;
-        int age = 30;
+public class Person {
 
-    void go() {}
+    String sex = "male";
+    String name = "Alex";
+    int height = 180;
+    int weight = 80;
+    int age = 30;
 
-    void sit() {}
+    void go() {
+    }
 
-    void run() {}
+    void sit() {
+    }
 
-    void speak() {}
+    void run() {
+    }
 
-    void learnJava() {}
+    void speak() {
+    }
+
+    void learnJava() {
+    }
 }
