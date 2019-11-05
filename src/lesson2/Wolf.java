@@ -1,5 +1,11 @@
 public class Wolf {
 
+    private String gender;
+    private String name;
+    private int weight;
+    private int age;
+    private String color;
+
     public String getGender() {
         return gender;
     }
@@ -45,12 +51,6 @@ public class Wolf {
     public void setColor(String color) {
         this.color = color;
     }
-
-    private String gender;
-    private String name;
-    private int weight;
-    private int age;
-    private String color;
 
     public void go() {
     }
