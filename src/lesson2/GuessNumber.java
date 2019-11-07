@@ -3,9 +3,7 @@ import java.util.Scanner;
 public class GuessNumber {
 
     private static Scanner scanner = new Scanner(System.in);
-    private static GuessNumber guessNumber = new GuessNumber();
-
-    private int mystery = (int) (Math.random() * 100);
+    private final int mystery = (int) (Math.random() * 100);
 
     public int getMystery() {
         return mystery;
@@ -35,14 +33,19 @@ public class GuessNumber {
         } while (!res.equals("да"));
     }
 
-    public void common(Player player) {
-        System.out.println("Игрок " + player.getName() + ", введите число");
+    public void common(String name) {
+        System.out.println("Игрок " + name + ", введите число");
         int pl1 = scanner.nextInt();
-        if (!guessNumber.check(pl1)) {
-            compare(pl1, guessNumber.getMystery());
+        if (!check(pl1)) {
+            compare(pl1, getMystery());
         } else {
-            System.out.println(player.getName() + ", вы угадали!");
+            System.out.println(name + ", вы угадали!");
             doYouWantToContinue();
         }
+    }
+
+    public String naming(int number) {
+        System.out.println("Введите имя " + number + " игрока:");
+        return scanner.next();
     }
 }
