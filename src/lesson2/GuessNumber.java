@@ -3,27 +3,25 @@ public class GuessNumber {
     private static Scanner scanner = new Scanner(System.in);
     private static int mystery = (int) (Math.random() * 100);
 
-    public static void start() {
-        Player player1 = new Player(naming(1));
-        Player player2 = new Player(naming(2));
+    public static void start(Player player1, Player player2) {
         while (true) {
-            guess(player1.getName());
-            guess(player2.getName());
+            guess(player1);
+            guess(player2);
         }
     }
 
-    private static String naming(int number) {
+    public static String naming(int number) {
         System.out.println("Введите имя " + number + " игрока:");
         return scanner.next();
     }
 
-    private static void guess(String name) {
-        System.out.println("Игрок " + name + ", введите число");
-        int pl1 = scanner.nextInt();
-        if (!check(pl1)) {
-            compare(pl1, mystery);
+    private static void guess(Player player) {
+        System.out.println("Игрок " + player.getName() + ", введите число");
+        player.setNumber(scanner.nextInt());
+        if (!check(player.getNumber())) {
+            compare(player.getNumber(), mystery);
         } else {
-            System.out.println(name + ", вы угадали!");
+            System.out.println(player.getName() + ", вы угадали!");
             continueAsk();
         }
     }
