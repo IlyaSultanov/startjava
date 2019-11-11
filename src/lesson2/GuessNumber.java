@@ -1,15 +1,34 @@
-import java.util.Scanner;
-
 public class GuessNumber {
 
     private static Scanner scanner = new Scanner(System.in);
-    private final int mystery = (int) (Math.random() * 100);
+    private static int mystery = (int) (Math.random() * 100);
 
-    public int getMystery() {
-        return mystery;
+    public static void start() {
+        Player player1 = new Player(naming(1));
+        Player player2 = new Player(naming(2));
+        while (true) {
+            guess(player1.getName());
+            guess(player2.getName());
+        }
     }
 
-    public boolean check(int num) {
+    private static String naming(int number) {
+        System.out.println("Введите имя " + number + " игрока:");
+        return scanner.next();
+    }
+
+    private static void guess(String name) {
+        System.out.println("Игрок " + name + ", введите число");
+        int pl1 = scanner.nextInt();
+        if (!check(pl1)) {
+            compare(pl1, mystery);
+        } else {
+            System.out.println(name + ", вы угадали!");
+            continueAsk();
+        }
+    }
+
+    private static boolean check(int num) {
         return num == mystery;
     }
 
@@ -21,7 +40,7 @@ public class GuessNumber {
         }
     }
 
-    private void doYouWantToContinue() {
+    private static void continueAsk() {
         String res;
         do {
             System.out.println("Хотите продолжить? (да/нет)");
@@ -31,21 +50,5 @@ public class GuessNumber {
                 System.exit(0);
             }
         } while (!res.equals("да"));
-    }
-
-    public void common(String name) {
-        System.out.println("Игрок " + name + ", введите число");
-        int pl1 = scanner.nextInt();
-        if (!check(pl1)) {
-            compare(pl1, getMystery());
-        } else {
-            System.out.println(name + ", вы угадали!");
-            doYouWantToContinue();
-        }
-    }
-
-    public String naming(int number) {
-        System.out.println("Введите имя " + number + " игрока:");
-        return scanner.next();
     }
 }
