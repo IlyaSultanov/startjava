@@ -1,3 +1,5 @@
+package lesson2;
+
 public class Player {
 
     private String name;
@@ -18,6 +20,4 @@ public class Player {
     public void setNumber(int number) {
         this.number = number;
     }
-
-
 }

@@ -1,47 +1,44 @@
+package lesson2;
+
+import java.util.Scanner;
+
 public class GuessNumber {
 
-    private static Scanner scanner = new Scanner(System.in);
-    private static int mystery = (int) (Math.random() * 100);
+    private Scanner scanner = new Scanner(System.in);
+    private int mystery = (int) ((Math.random() + 0.01) * 100);
 
-    public void start(Player player1, Player player2) {
-        while (true) {
+    private Player player1;
+    private Player player2;
+
+    public GuessNumber(Player player1, Player player2) {
+        this.player1 = player1;
+        this.player2 = player2;
+    }
+
+    public void start() {
+        boolean res = true;
+        while (res) {
             guess(player1);
             guess(player2);
         }
     }
 
-    private void guess(Player player) {
+    private boolean guess(Player player) {
         System.out.println("Игрок " + player.getName() + ", введите число");
         player.setNumber(scanner.nextInt());
-        if (!check(player.getNumber())) {
-            compare(player.getNumber(), mystery);
+        return (compare(player, mystery));
+    }
+
+    private boolean compare(Player player, int model) {
+        if (player.getNumber() > model) {
+            System.out.println("Число слишком большое");
+            return true;
+        } else if (player.getNumber() < model) {
+            System.out.println("Число слишком маленькое");
+            return true;
         } else {
             System.out.println(player.getName() + ", вы угадали!");
-            continueAsk();
+            return false;
         }
-    }
-
-    private boolean check(int num) {
-        return num == mystery;
-    }
-
-    private void compare(int num, int model) {
-        if (num > model) {
-            System.out.println("Число слишком большое");
-        } else {
-            System.out.println("Число слишком маленькое");
-        }
-    }
-
-    private void continueAsk() {
-        String res;
-        do {
-            System.out.println("Хотите продолжить? (да/нет)");
-            res = scanner.next();
-            if (res.equals("нет")) {
-                System.out.println("Завершение программы");
-                System.exit(0);
-            }
-        } while (!res.equals("да"));
     }
 }
