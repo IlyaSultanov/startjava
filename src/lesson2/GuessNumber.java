@@ -3,19 +3,14 @@ public class GuessNumber {
     private static Scanner scanner = new Scanner(System.in);
     private static int mystery = (int) (Math.random() * 100);
 
-    public static void start(Player player1, Player player2) {
+    public void start(Player player1, Player player2) {
         while (true) {
             guess(player1);
             guess(player2);
         }
     }
 
-    public static String naming(int number) {
-        System.out.println("Введите имя " + number + " игрока:");
-        return scanner.next();
-    }
-
-    private static void guess(Player player) {
+    private void guess(Player player) {
         System.out.println("Игрок " + player.getName() + ", введите число");
         player.setNumber(scanner.nextInt());
         if (!check(player.getNumber())) {
@@ -26,11 +21,11 @@ public class GuessNumber {
         }
     }
 
-    private static boolean check(int num) {
+    private boolean check(int num) {
         return num == mystery;
     }
 
-    private static void compare(int num, int model) {
+    private void compare(int num, int model) {
         if (num > model) {
             System.out.println("Число слишком большое");
         } else {
@@ -38,7 +33,7 @@ public class GuessNumber {
         }
     }
 
-    private static void continueAsk() {
+    private void continueAsk() {
         String res;
         do {
             System.out.println("Хотите продолжить? (да/нет)");
