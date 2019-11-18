@@ -1,7 +1,3 @@
-package lesson2;
-
-import java.util.Scanner;
-
 public class GuessNumberTest {
 
     private static Scanner scanner = new Scanner(System.in);
@@ -10,8 +6,10 @@ public class GuessNumberTest {
     private static GuessNumber guessNumber = new GuessNumber(player1, player2);
 
     public static void main(String[] args) {
-        guessNumber.start();
-        continueAsk();
+        do {
+            guessNumber.start();
+            continueAsk();
+        } while (true);
     }
 
     private static String inputName(int number) {
@@ -29,6 +27,5 @@ public class GuessNumberTest {
                 System.exit(0);
             }
         } while (!res.equals("да"));
-        guessNumber.start();
     }
 }

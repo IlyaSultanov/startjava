@@ -1,11 +1,6 @@
-package lesson2;
-
-import java.util.Scanner;
-
 public class GuessNumber {
 
     private Scanner scanner = new Scanner(System.in);
-    private int mystery = (int) ((Math.random() + 0.01) * 100);
 
     private Player player1;
     private Player player2;
@@ -16,29 +11,35 @@ public class GuessNumber {
     }
 
     public void start() {
-        boolean res = true;
-        while (res) {
+        int mystery = (int) ((Math.random() + 0.01) * 100);
+        while (true) {
             guess(player1);
+            if (compare(player1, mystery)) {
+                System.out.println(player1.getName() + ", вы угадали!");
+                return;
+            }
             guess(player2);
+            if (compare(player2, mystery)) {
+                System.out.println(player2.getName() + ", вы угадали!");
+                return;
+            }
         }
     }
 
-    private boolean guess(Player player) {
+    private void guess(Player player) {
         System.out.println("Игрок " + player.getName() + ", введите число");
         player.setNumber(scanner.nextInt());
-        return (compare(player, mystery));
     }
 
     private boolean compare(Player player, int model) {
         if (player.getNumber() > model) {
             System.out.println("Число слишком большое");
-            return true;
+            return false;
         } else if (player.getNumber() < model) {
             System.out.println("Число слишком маленькое");
-            return true;
-        } else {
-            System.out.println(player.getName() + ", вы угадали!");
             return false;
+        } else {
+            return true;
         }
     }
 }
