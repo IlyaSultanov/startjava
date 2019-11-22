@@ -1,15 +1,17 @@
 public class GuessNumberTest {
 
     private static Scanner scanner = new Scanner(System.in);
-    private static Player player1 = new Player(inputName(1));
-    private static Player player2 = new Player(inputName(2));
-    private static GuessNumber guessNumber = new GuessNumber(player1, player2);
+    private static boolean indicator = true;
 
     public static void main(String[] args) {
+        Player player1 = new Player(inputName(1));
+        Player player2 = new Player(inputName(2));
+        GuessNumber guessNumber = new GuessNumber(player1, player2);
         do {
             guessNumber.start();
             continueAsk();
-        } while (true);
+        } while (indicator);
+        System.out.println("Завершение программы");
     }
 
     private static String inputName(int number) {
@@ -18,14 +20,14 @@ public class GuessNumberTest {
     }
 
     private static void continueAsk() {
-        String res;
+        String playerAnswer;
         do {
             System.out.println("Хотите продолжить? (да/нет)");
-            res = scanner.next();
-            if (res.equals("нет")) {
-                System.out.println("Завершение программы");
-                System.exit(0);
+            playerAnswer = scanner.next();
+            if (playerAnswer.equals("нет")) {
+                indicator = false;
             }
-        } while (!res.equals("да"));
+        }
+        while (!playerAnswer.equals("да") && !playerAnswer.equals("нет"));
     }
 }
