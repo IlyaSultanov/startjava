@@ -1,7 +1,6 @@
 public class GuessNumberTest {
 
     private static Scanner scanner = new Scanner(System.in);
-    private static boolean indicator = true;
 
     public static void main(String[] args) {
         Player player1 = new Player(inputName(1));
@@ -9,8 +8,7 @@ public class GuessNumberTest {
         GuessNumber guessNumber = new GuessNumber(player1, player2);
         do {
             guessNumber.start();
-            continueAsk();
-        } while (indicator);
+        } while (isContinue());
         System.out.println("Завершение программы");
     }
 
@@ -19,15 +17,16 @@ public class GuessNumberTest {
         return scanner.next();
     }
 
-    private static void continueAsk() {
+    private static boolean isContinue() {
         String playerAnswer;
         do {
             System.out.println("Хотите продолжить? (да/нет)");
             playerAnswer = scanner.next();
-            if (playerAnswer.equals("нет")) {
-                indicator = false;
+            if (playerAnswer.equals("да")) {
+                return true;
             }
         }
-        while (!playerAnswer.equals("да") && !playerAnswer.equals("нет"));
+        while (!playerAnswer.equals("нет"));
+        return false;
     }
 }
