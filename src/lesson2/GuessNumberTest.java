@@ -25,8 +25,7 @@ public class GuessNumberTest {
             if (playerAnswer.equals("да")) {
                 return true;
             }
-        }
-        while (!playerAnswer.equals("нет"));
+        } while (!playerAnswer.equals("нет"));
         return false;
     }
 }
