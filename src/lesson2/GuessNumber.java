@@ -13,17 +13,26 @@ public class GuessNumber {
     public void start() {
         mysteryNumber = (int) (Math.random() * 101);
         while (true) {
-            if (makeMove(player1, mysteryNumber)) {
+            if (makeMove(player1)) {
                 return;
             }
-            if (makeMove(player2, mysteryNumber)) {
+            if (makeMove(player2)) {
                 return;
             }
         }
     }
 
-    private boolean makeMove(Player player, int mysteryNumber) {
+    private boolean makeMove(Player player) {
         inputNumber(player);
+        return compare(player);
+    }
+
+    private void inputNumber(Player player) {
+        System.out.println("Игрок " + player.getName() + ", введите число");
+        player.setNumber(scanner.nextInt());
+    }
+
+    private boolean compare(Player player) {
         if (player.getNumber() > mysteryNumber) {
             System.out.println("Число слишком большое");
         } else if (player.getNumber() < mysteryNumber) {
@@ -33,10 +42,5 @@ public class GuessNumber {
             return true;
         }
         return false;
-    }
-
-    private void inputNumber(Player player) {
-        System.out.println("Игрок " + player.getName() + ", введите число");
-        player.setNumber(scanner.nextInt());
     }
 }
