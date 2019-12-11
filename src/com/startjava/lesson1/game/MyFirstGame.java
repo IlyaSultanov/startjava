@@ -1,4 +1,6 @@
-public class ConditionalStatement {
+package com.startjava.lesson1.game;
+
+public class MyFirstGame {
 
     public static void main(String[] args) {
         byte age = 25;
