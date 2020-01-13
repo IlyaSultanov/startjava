@@ -9,14 +9,9 @@ public class CalculatorTest {
         String res;
 
         while (true) {
-            System.out.println("Введите первое число:");
-            int a = scanner.nextInt();
-            System.out.println("Введите знак математической операции:");
-            String operator = scanner.next();
-            System.out.println("Введите второе число:");
-            int b = scanner.nextInt();
-
-            System.out.println(calculator.calculate(a, operator, b));
+            System.out.println("Введите математическое выражение:");
+            String a = scanner.nextLine();
+            System.out.println(calculator.calculate(a));
 
             do {
                 System.out.println("Хотите продолжить? (да/нет)");

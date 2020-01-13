@@ -2,8 +2,12 @@ package com.startjava.lesson2.calculator;
 
 public class Calculator {
 
-    public int calculate(int a, String operator, int b) {
+    public int calculate(String expression) {
         int result = 0;
+        String[] rawExpression = expression.split(" ");
+        int a = Integer.parseInt(rawExpression[0]);
+        String operator = rawExpression[1];
+        int b = Integer.parseInt(rawExpression[2]);
         switch (operator) {
             case "+":
                 result = a + b;
@@ -15,14 +19,13 @@ public class Calculator {
                 result = a * b;
                 break;
             case "/":
-                result = a / b;
+                result = Math.floorDiv(a, b);
                 break;
             case "^":
-                int c = 1;
-                for (int i = 0; i < b; i++) {
-                    c *= a;
-                }
-                result = c;
+                Double c = Double.parseDouble(rawExpression[0]);
+                Double d = Double.parseDouble(rawExpression[2]);
+                Double rawResult = Math.pow(c, d);
+                result = Integer.parseInt(rawResult.toString());
                 break;
             case "%":
                 result = a % b;
