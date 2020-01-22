@@ -1,4 +1,4 @@
-package com.startjava.Lesson3_4.calculator;
+package com.startjava.lesson3_4.calculator;
 
 public class Calculator {
 
@@ -22,10 +22,10 @@ public class Calculator {
                 result = Math.floorDiv(a, b);
                 break;
             case "^":
-                Double c = Double.parseDouble(rawExpression[0]);
-                Double d = Double.parseDouble(rawExpression[2]);
-                Double rawResult = Math.pow(c, d);
-                result = Integer.parseInt(rawResult.toString());
+                double c = Double.parseDouble(rawExpression[0]);
+                double d = Double.parseDouble(rawExpression[2]);
+                double rawResult = Math.pow(c, d);
+                result = Integer.parseInt(String.valueOf(rawResult));
                 break;
             case "%":
                 result = a % b;

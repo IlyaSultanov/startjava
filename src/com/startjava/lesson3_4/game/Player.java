@@ -1,15 +1,15 @@
-package com.startjava.Lesson3_4.game;
+package com.startjava.lesson3_4.game;
 
 public class Player {
 
+    private int arrayCapacity = 10;
     private String name;
     private int number;
     private int countOfTry;
-    private int[] enteredNumbers = new int[10];
+    private int[] enteredNumbers = new int[arrayCapacity];
 
-    public Player(String name, int countOfTry) {
+    public Player(String name) {
         this.name = name;
-        this.countOfTry = countOfTry;
     }
 
     public String getName() {
@@ -33,10 +33,13 @@ public class Player {
     }
 
     public void setEnteredNumber(int number) {
-        enteredNumbers[10 - countOfTry] = number;
+        enteredNumbers[arrayCapacity - countOfTry] = number;
     }
 
     public int[] getEnteredNumbers() {
         return enteredNumbers;
     }
+
+    public int getArrayCapacity() { return arrayCapacity; }
+
 }

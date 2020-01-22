@@ -1,4 +1,4 @@
-package com.startjava.Lesson3_4.game;
+package com.startjava.lesson3_4.game;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -17,24 +17,47 @@ public class GuessNumber {
 
     public void start() {
         mysteryNumber = (int) (Math.random() * 101);
-        init(player1, player2);
+        init();
         while (true) {
             if (isBothTryEnd(player1, player2)) {
-                printBothSides(player1);
-                printBothSides(player2);
+                printPlayerAttempts(player1);
+                printPlayerAttempts(player2);
                 return;
             }
             if (makeMove(player1)) {
-                printBothSides(player1);
-                printBothSides(player2);
+                printPlayerAttempts(player1);
+                printPlayerAttempts(player2);
                 return;
             }
             if (makeMove(player2)) {
-                printBothSides(player1);
-                printBothSides(player2);
+                printPlayerAttempts(player1);
+                printPlayerAttempts(player2);
                 return;
             }
         }
+    }
+
+    private void init() {
+        clearEnteredNumbersArrayAndSetCountOfTry(player1);
+        clearEnteredNumbersArrayAndSetCountOfTry(player2);
+    }
+
+    private void clearEnteredNumbersArrayAndSetCountOfTry(Player player) {
+        Arrays.fill(player.getEnteredNumbers(), 0, player.getArrayCapacity() - player.getCountOfTry(), -1);
+        player.setCountOfTry(10);
+    }
+
+    private boolean isBothTryEnd(Player player1, Player player2) {
+        return player1.getCountOfTry() <= 0 || player2.getCountOfTry() <= 0;
+    }
+
+    private void printPlayerAttempts(Player player) {
+        System.out.print("Варианты, предложенные " + player.getName() + ": ");
+        int[] copyOfEnteredNumbers = Arrays.copyOf(player.getEnteredNumbers(), player.getArrayCapacity() - player.getCountOfTry());
+        for (int i = 0; i < copyOfEnteredNumbers.length; i++) {
+            System.out.print(copyOfEnteredNumbers[i] + " ");
+        }
+        System.out.println();
     }
 
     private boolean makeMove(Player player) {
@@ -68,31 +91,10 @@ public class GuessNumber {
         return false;
     }
 
-    private boolean isBothTryEnd(Player player1, Player player2) {
-        return player1.getCountOfTry() <= 0 || player2.getCountOfTry() <= 0;
-    }
-
     private void tryEnd(Player player) {
         if (player.getCountOfTry() < 1) {
             System.out.println("Игрок " + player.getName() + ", у вас кончились попытки");
         }
     }
 
-    private void printBothSides(Player player) {
-        System.out.print("Варианты, предложенные " + player.getName() + ": ");
-        for (int i = 0; i < player.getEnteredNumbers().length; i++) {
-            if (player.getEnteredNumbers()[i] == -1) {
-                break;
-            }
-            System.out.print(player.getEnteredNumbers()[i] + " ");
-        }
-        System.out.println();
-    }
-
-    private void init(Player player1, Player player2) {
-        Arrays.fill(player1.getEnteredNumbers(), -1);
-        Arrays.fill(player2.getEnteredNumbers(), -1);
-        player1.setCountOfTry(10);
-        player2.setCountOfTry(10);
-    }
 }
