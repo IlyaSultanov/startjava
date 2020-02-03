@@ -37,27 +37,24 @@ public class GuessNumber {
         }
     }
 
-    private void init() {
-        clearEnteredNumbersArrayAndSetCountOfTry(player1);
-        clearEnteredNumbersArrayAndSetCountOfTry(player2);
+    private void printPlayerAttempts(Player player) {
+        System.out.print("Варианты, предложенные " + player.getName() + ": ");
+        int[] enteredNumbers = Arrays.copyOf(player.getEnteredNumbers(), player.getArrayCapacity() - player.getCountOfTry());
+        for (int i = 0; i < enteredNumbers.length; i++) {
+            System.out.print(enteredNumbers[i] + " ");
+        }
+        System.out.println();
     }
 
-    private void clearEnteredNumbersArrayAndSetCountOfTry(Player player) {
-        Arrays.fill(player.getEnteredNumbers(), 0, player.getArrayCapacity() - player.getCountOfTry(), -1);
-        player.setCountOfTry(10);
+    private void init() {
+        Arrays.fill(player1.getEnteredNumbers(), 0, player1.getArrayCapacity() - player1.getCountOfTry(), -1);
+        player1.setCountOfTry(10);
+        Arrays.fill(player2.getEnteredNumbers(), 0, player2.getArrayCapacity() - player2.getCountOfTry(), -1);
+        player2.setCountOfTry(10);
     }
 
     private boolean isBothTryEnd(Player player1, Player player2) {
         return player1.getCountOfTry() <= 0 || player2.getCountOfTry() <= 0;
-    }
-
-    private void printPlayerAttempts(Player player) {
-        System.out.print("Варианты, предложенные " + player.getName() + ": ");
-        int[] copyOfEnteredNumbers = Arrays.copyOf(player.getEnteredNumbers(), player.getArrayCapacity() - player.getCountOfTry());
-        for (int i = 0; i < copyOfEnteredNumbers.length; i++) {
-            System.out.print(copyOfEnteredNumbers[i] + " ");
-        }
-        System.out.println();
     }
 
     private boolean makeMove(Player player) {
@@ -73,6 +70,7 @@ public class GuessNumber {
             player.setCountOfTry(player.getCountOfTry() - 1);
         } else {
             player.setNumber(-1);
+            System.out.println("Игрок " + player.getName() + ", у вас кончились попытки");
         }
 
     }
@@ -80,21 +78,13 @@ public class GuessNumber {
     private boolean compare(Player player) {
         if (player.getNumber() > mysteryNumber) {
             System.out.println("Число слишком большое");
-            tryEnd(player);
         } else if (player.getNumber() < mysteryNumber) {
             System.out.println("Число слишком маленькое");
-            tryEnd(player);
         } else {
             System.out.println(player.getName() + ", вы угадали!");
             return true;
         }
         return false;
-    }
-
-    private void tryEnd(Player player) {
-        if (player.getCountOfTry() < 1) {
-            System.out.println("Игрок " + player.getName() + ", у вас кончились попытки");
-        }
     }
 
 }

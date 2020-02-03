@@ -6,7 +6,7 @@ public class CalculatorTest {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
-        String keybordInput;
+        String playerAnswer;
 
         while (true) {
             System.out.println("Введите математическое выражение:");
@@ -15,12 +15,12 @@ public class CalculatorTest {
 
             do {
                 System.out.println("Хотите продолжить? (да/нет)");
-                keybordInput = scanner.next();
-                if (keybordInput.equals("нет")) {
+                playerAnswer = scanner.next();
+                if (playerAnswer.equals("нет")) {
                     System.out.println("Завершение программы");
                     return;
                 }
-            } while (!keybordInput.equals("да"));
+            } while (!playerAnswer.equals("да"));
         }
     }
 }

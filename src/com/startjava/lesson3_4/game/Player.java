@@ -2,11 +2,11 @@ package com.startjava.lesson3_4.game;
 
 public class Player {
 
-    private int arrayCapacity = 10;
+    private static final int CAPACITY = 10;
     private String name;
     private int number;
     private int countOfTry;
-    private int[] enteredNumbers = new int[arrayCapacity];
+    private int[] enteredNumbers = new int[CAPACITY];
 
     public Player(String name) {
         this.name = name;
@@ -33,13 +33,15 @@ public class Player {
     }
 
     public void setEnteredNumber(int number) {
-        enteredNumbers[arrayCapacity - countOfTry] = number;
+        enteredNumbers[CAPACITY - countOfTry] = number;
     }
 
     public int[] getEnteredNumbers() {
         return enteredNumbers;
     }
 
-    public int getArrayCapacity() { return arrayCapacity; }
+    public int getArrayCapacity() {
+        return CAPACITY;
+    }
 
 }
